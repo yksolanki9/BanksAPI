@@ -5,6 +5,8 @@ const { Client } = require('pg');
 const app = express();
 dotenv.config();
 
+const PORT = process.env.PORT;
+
 const client = new Client({
     user: process.env.PG_USER,
     host: process.env.PG_HOST,
@@ -72,6 +74,6 @@ app.get('/api/branches', (req, res) => {
     })();
 });
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000...')
+app.listen(PORT || 3000, () => {
+    console.log('Server is up and running!');
 });
